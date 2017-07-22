@@ -4,15 +4,15 @@
     <h1 class="title" *ngIf="game$ | async; let game">
       {{ game.expected }}
     </h1>
-    <form>
+    <div>
       <div class="field">
         <p class="control">
-          <input type="text" class="input">
+          <input type="number" class="input" [(ngModel)]="expected" />
         </p>
       </div>
       <div class="field">
-        <button class="button">Change</button>
+        <button class="button" (click)="onClick()">Change</button>
       </div>
-    </form>
+    </div>
   </div>
 </div>

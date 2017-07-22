@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store'
+import { StoreModule } from '@ngrx/store';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { gameReducer } from './state/game'
+import { gameReducer } from './state/game';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { gameReducer } from './state/game'
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     StoreModule.forRoot({
       game: gameReducer
     }, {

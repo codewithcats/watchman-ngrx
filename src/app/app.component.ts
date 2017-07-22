@@ -10,6 +10,7 @@ import { EXPECTED_CHANGE } from './state/game';
 })
 export class AppComponent {
   game$: Observable<any>;
+  expected: number;
   constructor(private store: Store<any>) {
     this.game$ = store.select('game');
     const action = {
@@ -19,5 +20,15 @@ export class AppComponent {
       }
     };
     store.dispatch(action);
+  }
+
+  onClick() {
+    const action = {
+      type: EXPECTED_CHANGE,
+      payload: {
+        expected: this.expected
+      }
+    };
+    this.store.dispatch(action);
   }
 }
