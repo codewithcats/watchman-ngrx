@@ -1,7 +1,6 @@
-import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { EXPECTED_CHANGE } from './state/game';
+import { GameService } from './state/game.service';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +10,12 @@ import { EXPECTED_CHANGE } from './state/game';
 export class AppComponent {
   game$: Observable<any>;
   expected: number;
-  constructor(private store: Store<any>) {
-    this.game$ = store.select('game');
-    const action = {
-      type: EXPECTED_CHANGE,
-      payload: {
-        expected: 10
-      }
-    };
-    store.dispatch(action);
+
+  constructor(private gameService: GameService) {
+    this.game$ = gameService.game$;
   }
 
   onClick() {
-    const action = {
-      type: EXPECTED_CHANGE,
-      payload: {
-        expected: this.expected
-      }
-    };
-    this.store.dispatch(action);
+    this.gameService.changeExpected(this.expected);
   }
 }

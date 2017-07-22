@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { gameReducer } from './state/game';
+import { GameService } from './state/game.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { gameReducer } from './state/game';
       }
     })
   ],
-  providers: [],
+  providers: [
+    GameService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
