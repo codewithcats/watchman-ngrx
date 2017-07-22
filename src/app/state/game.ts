@@ -1,7 +1,16 @@
-import {Action} from '@ngrx/store';
+import {Action} from './state';
 
-export const EXPECTED_CHANGE = 'game/EXPECTED_CHANGE' ;
+interface GameState {
+  expected: number;
+}
 
-export function gameReducer(state, action) {
-  return state;
-};
+export const EXPECTED_CHANGE = 'game/EXPECTED_CHANGE';
+
+export function gameReducer(state: GameState, action: Action): GameState {
+  switch (action.type) {
+    case EXPECTED_CHANGE:
+      const {expected} = action.payload;
+      return Object.assign({}, state, {expected});
+    default: return state;
+  }
+}

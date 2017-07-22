@@ -1,8 +1,18 @@
 <h1 class="title is-1 center">WatchMan</h1>
 <div class="hero">
   <div class="hero-body">
-    <h1 class="title" *ngIf="gameStore | async; let game">
+    <h1 class="title" *ngIf="game$ | async; let game">
       {{ game.expected }}
     </h1>
+    <form>
+      <div class="field">
+        <p class="control">
+          <input type="text" class="input">
+        </p>
+      </div>
+      <div class="field">
+        <button class="button">Change</button>
+      </div>
+    </form>
   </div>
 </div>

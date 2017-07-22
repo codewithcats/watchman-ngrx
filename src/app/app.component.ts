@@ -1,6 +1,7 @@
-import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs/Observable'
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
+import { EXPECTED_CHANGE } from './state/game';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  gameStore: Observable<any>;
+  game$: Observable<any>;
   constructor(private store: Store<any>) {
-    this.gameStore = store.select('game')
+    this.game$ = store.select('game');
+    const action = {
+      type: EXPECTED_CHANGE,
+      payload: {
+        expected: 10
+      }
+    };
+    store.dispatch(action);
   }
 }
