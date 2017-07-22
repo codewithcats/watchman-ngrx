@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { Component } from '@angular/core';
 import { GameService } from './state/game.service';
 
@@ -9,10 +10,13 @@ import { GameService } from './state/game.service';
 })
 export class AppComponent {
   game$: Observable<any>;
+  level$: Observable<string>;
   expected: number;
 
   constructor(private gameService: GameService) {
     this.game$ = gameService.game$;
+    this.level$ = this.game$
+    .map(game => game.expected > 5 ? 'Hard' : 'Easy');
   }
 
   onClick() {

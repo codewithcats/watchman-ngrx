@@ -2,7 +2,7 @@
 <div class="hero">
   <div class="hero-body">
     <h1 class="title" *ngIf="game$ | async; let game">
-      {{ game.expected }}
+      {{ game.expected }} {{ level$ | async }}
     </h1>
     <div>
       <div class="field">
