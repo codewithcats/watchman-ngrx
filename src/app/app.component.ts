@@ -17,9 +17,8 @@ export class AppComponent {
     this.game$ = gameService.game$;
     this.level$ = this.game$
     .map(game => game.expected > 5 ? 'Hard' : 'Easy');
+
+    this.gameService.randomExpected();
   }
 
-  onClick() {
-    this.gameService.changeExpected(this.expected);
-  }
 }
