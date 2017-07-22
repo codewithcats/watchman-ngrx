@@ -1,3 +1,5 @@
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs/Observable'
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  gameStore: Observable<any>;
+  constructor(private store: Store<any>) {
+    this.gameStore = store.select('game')
+  }
 }
